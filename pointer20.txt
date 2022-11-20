@@ -1,0 +1,208 @@
+1.
+#include<stdio.h>
+void swap(int *,int *);
+int main()
+{
+    int x=5,y=20;
+    swap(&x,&y);
+    printf("x=%d y=%d",x,y);
+}
+void swap(int *p,int *q)
+{
+    int t;
+    t=*p;
+    *p=*q;
+    *q=t;
+}
+2.
+#include<stdio.h>
+#include<string.h>
+void swap(char **x,char **y)
+{
+    char *temp;
+    temp=*x;
+    *x=*y;
+    *y=temp;
+}
+int main()
+{
+    char *a[20],*b[20];
+    printf("enter two string");
+    gets(a);
+    gets(b);
+    swap(&a,&b);
+    printf("%s %s",a,b);
+}
+
+3.
+#include<stdio.h>
+void sort(int *ptr,int size)
+{
+    int i,j,temp;
+    for(i=0;i<size-1;i++)
+    {
+        for(j=i;j<size;j++)
+        {
+            if(ptr[i]>ptr[j])
+            {
+                temp=ptr[i];
+                ptr[i]=ptr[j];
+                ptr[j]=temp;
+            }
+        }
+    }
+}
+int main()
+{
+    int a[]={10,12,67,90,34,2,4,67,55,69},i;
+    sort(a,10);
+    for(i=0;i<10;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
+4
+#include<stdio.h>
+int main()
+{
+    int x=5,*p,**q,***r;
+    p=&x;
+    q=&p;
+    r=&q;
+    printf("%d %d %d %d\n",x,*p,**q,***r);
+    printf("%d %d %d %d\n",&x,&p,&q,&r);
+    printf("%d %d %d %d\n",p,q,r,*&r);
+    printf("%d %d %d %d\n",*&p,**r,*q,***&r);
+    return 0;
+}
+5
+#include<stdio.h>
+int main()
+{
+    int a,b,*p1=&a,*p2=&b;
+    printf("enter a number");
+    scanf("%d",p1);
+    printf("enter two number");
+    scanf("%d",p2);
+    if(*p1>*p2)
+    {
+        printf("%d is maximum number ",*p1);
+    }
+    else
+    {
+         printf("%d is maximum number ",*p2);
+    }
+
+}
+6
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int l;
+    char ptr[10];
+    fgets(ptr,20,stdin);
+    l=strlen(ptr);
+    printf("%d",l);
+   
+}
+int lenstr(char *p)
+{
+    int i,count=0;
+    for(i=0;*(p+i)!='\0';i++)
+    {
+        count++;
+    }
+    return count-1;
+}
+7
+#include<stdio.h>
+int main()
+{
+    char str[20];
+    char *p;
+    int vowel=0,cons=0;
+    printf("enter two string");
+    fgets(str,20,stdin);
+    p=str;
+    while(*p!='\0')
+    {
+        if((*p=='a'||*p=='e'||*p=='i'||*p=='O'||*p=='u')||(
+            *p=='A'||*p=='I'||*p=='O'||*p=='E'||*p=='U'))
+        vowel++;
+       else
+        cons++;
+        p++;
+    }
+    printf(" vowel %d\n",vowel);
+    printf("constant %d\n",cons-1);
+    return 0;
+}
+8
+#include<stdio.h>
+int main()
+{
+    int i,n,a[10],sum=0;
+    int *ptr;
+    printf("enter a number");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("enter a element %d:-",i);
+        scanf("%d",&a[i]);
+    }
+    ptr=a;
+    for(i=0;i<n;i++)
+    {
+        sum=sum+*ptr;
+        ptr++;
+    }
+    printf("%d",sum);
+}
+9
+#include<stdio.h>
+int main()
+{
+    int n,i,a[20];
+    int *ptr;
+    printf("enter a number");
+    scanf("%d",&n);
+    ptr=&a[0];
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",ptr);
+        ptr++;
+    }
+    ptr=a[n-1];
+    for(i=n;i>0;i--)
+    {
+      {
+        printf("%d %d",i,ptr);
+        ptr--;
+      }
+    }
+
+}
+10
+#include<stdio.h>
+void reverse(char *);
+int main()
+{
+    char str[10];
+    printf("enter a string");
+    gets(str);
+    reverse(str);
+    return 0;
+}
+void reverse(char *p)
+{
+    int i,l=0;
+    for(i=0;*(p+i)!='\0';i++)
+    {
+        l++;
+    }
+    for(i=l-1;i>=0;i--)
+    {
+        printf("%c ",*(p+i));
+    }
+}
